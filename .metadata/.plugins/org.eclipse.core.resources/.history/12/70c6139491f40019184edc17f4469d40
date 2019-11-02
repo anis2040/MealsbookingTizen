@@ -1,0 +1,40 @@
+function getRestaurantById(idrestaurant){
+		
+		idmission = localStorage;
+		localStorage.setItem('id_restaurant', idrestaurant);
+		
+	}
+
+
+
+
+function restaurants(){
+	
+	var url = 'http://127.0.0.1:8000/api/restaurants';
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', url, true);
+	xhr.onload = function() {
+		var i=0;
+		var row="";
+		  var userid = localStorage.getItem("userid");
+
+	  if (this.status == 200 && this.readyState == 4) {
+		  /*
+		  var mission = JSON.parse(this.responseText);
+		  for (i = 0; i <mission.missions.length; i++) { 
+			  
+			  if (userid == mission.missions[i].user_id ){
+			  row = row+'  <section class="container">  <section class="box special" ><h3><a href="detailsmission.html" onclick="getidmission('+mission.missions[i].id+')"><p>'+mission.missions[i].title+'</p><p>'+mission.missions[i].description+'</p><p>'+mission.missions[i].date+'</p><p>'+mission.missions[i].total+'</p><h3></section></section>';  
+			  }
+		  
+		  }
+		  */
+		document.getElementById("demo").innerHTML = row; 
+	    console.log('response', this.response); // JSON response  
+	  }
+	};
+xhr.send();
+}
+
+
+

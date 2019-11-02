@@ -1,0 +1,89 @@
+function getRestaurantById(idrestaurant){
+		
+		localStorage.setItem('id_restaurant', idrestaurant);
+		
+	}
+
+
+
+
+function restaurants(){
+	
+	var url = 'http://127.0.0.1:8000/api/restaurants';
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', url, true);
+	xhr.onload = function() {
+		var i=0;
+		var row="";
+		  var userid = localStorage.getItem("userid");
+
+	  if (this.status == 200 ) {
+		  /*
+		  var mission = JSON.parse(this.responseText);
+		  for (i = 0; i <mission.missions.length; i++) { 
+			  
+			  if (userid == mission.missions[i].user_id ){
+			  row = row+'  <section class="container">  <section class="box special" ><h3><a href="detailsmission.html" onclick="getidmission('+mission.missions[i].id+')"><p>'+mission.missions[i].title+'</p><p>'+mission.missions[i].description+'</p><p>'+mission.missions[i].date+'</p><p>'+mission.missions[i].total+'</p><h3></section></section>';  
+			  }
+		  
+		  }
+		  */
+		document.getElementById("demo").innerHTML = row; 
+	    console.log('response', this.response); // JSON response  
+	  }
+	};
+xhr.send();
+}
+
+
+
+function affdetailmission(){
+	
+	
+	  var missionid = localStorage.getItem("id_mission");
+
+	
+	var url = 'http://172.16.211.253/sema_tizen/MissionApi/v1/Api.php?apicall=getmissionsbyid&id='+missionid;
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', url, true);
+	xhr.onload = function() {
+		var i=0;
+		var title="";
+		var description="";
+		var date="";
+		var total="";
+
+	  if (this.status == 200 && this.readyState == 4) {
+		  //alert("aaa: " + this.responseText);
+		  var bill = JSON.parse(this.responseText);
+		  
+		  for (i = 0; i <bill.missions.length; i++) { 
+	
+		
+			  title = bill.missions[i].title ;
+			  description = bill.missions[i].description ;
+			  date = bill.missions[i].date ;
+			  total = bill.missions[i].total ;
+			  
+			  //alert("jd: " + bill.missions[i].description);
+			// store item
+			  localStorage.setItem("missiontitle", title);
+			  localStorage.setItem("missiondescription", description );
+			  localStorage.setItem("missiondate", date );
+			  localStorage.setItem("missiontotal", total);
+			  
+			  
+		  }
+			  document.getElementById("title").innerHTML = title;   
+		      document.getElementById("description").innerHTML= description;
+		        document.getElementById("date").innerHTML= date;
+		        document.getElementById("total").innerHTML= total;
+			  
+			  
+	   // console.log('response', this.response); // JSON response  
+	  }
+	};
+xhr.send();
+}
+
+

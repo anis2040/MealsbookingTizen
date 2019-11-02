@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" class="pink-theme">
+
+<!-- Mirrored from maxartkiller.com/website/GoMobileUX/gofruit/splash.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Oct 2019 23:56:37 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="Maxartkiller">
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="row no-gutters vh-100">
+        <div class="col align-self-center text-white text-center">
+            
+            <h1><span class="font-weight-light">Meals</span>Booking</h1>
+            <div class="laoderhorizontal"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+
+    <!-- jquery, popper and bootstrap js -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- swiper js -->
+    <script src="vendor/swiper/js/swiper.min.js"></script>
+    
+    <!-- template custom js -->
+    <script src="js/main.js"></script>
+    
+    <script>
+        $(window).on('load', function(){
+            setTimeout(function(){
+                window.open("introduction.html", "_self");    
+            }, 4000)
+            
+        })
+    
+    </script>
+</body>
+
+
+<!-- Mirrored from maxartkiller.com/website/GoMobileUX/gofruit/splash.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Oct 2019 23:56:37 GMT -->
+</html>
