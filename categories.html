@@ -22,12 +22,14 @@
 
     <!-- app CSS -->
     <link id="theme" rel="stylesheet" href="css/style.css" type="text/css">
+    
+    
 
 
-    <title>MobileUX</title>
+    <title>MealsBooking</title>
 </head>
 
-<body class="color-theme-yellow push-content-right theme-light">
+<body class="color-theme-yellow push-content-right theme-light" >
     <div class="loader justify-content-center ">
         <div class="maxui-roller align-self-center"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
@@ -261,144 +263,26 @@
                         <div class="col-12 my-3">
                             <figure class="categories-banner">
                                 <img src="img/small1.jpg">
-                                <figcaption>Indian Food</figcaption>
+                                <figcaption id="title">Indian Food</figcaption>
+                                <h1 id="categoryTitle"></h1>
                             </figure>
                         </div>
                     </div>                   
                     <div class="row m-0">
-                        <div class="col-12">
-                            <div class="card ">
-                                <div class="card-body">
-                                    <div class="media">
-                                        <a href="#" class="square-40 mr-3"><img src="img/small1.jpg" alt=""></a>
-                                        <a href="#" class="media-body">
-                                            <h5>Dikki & Johns</h5>
-                                            <p>Indian</p>
-                                        </a>
-                                        <a class="like-heart color-red">
-                                            <i class="icon material-icons">favorite</i>
-                                        </a>
-                                    </div>
+                        <div class="col-12" id="resto">
+                            
 
-                                </div>
-                                <div class="card-footer pt-0">
-                                    <div class="row">
-                                        <div class="col-auto">
-                                            <i class="material-icons text-warning">star</i>
-                                            <span class="post-seconds">4.9 <span>(254)</span></span>
-                                        </div>
-                                        <div class="col">
-                                            <i class="material-icons text-grey">schedule</i>
-                                            <span class="post-seconds">20 <span>min</span></span>
-                                        </div>
-                                        <div class="col">
-                                            <i class="material-icons text-grey">monetization_on</i>
-                                            <span class="post-seconds">40 <span>$</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="media">
-                                        <a href="#" class="square-40 mr-3"><img src="img/small3.jpg" alt=""></a>
-                                        <a href="#" class="media-body">
-                                            <h5>La venta D’souza</h5>
-                                            <p>American</p>
-                                        </a>
-                                        <a class="like-heart color-red">
-                                            <i class="icon material-icons">favorite_border</i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="card-footer pt-0">
-                                    <div class="row">
-                                        <div class="col-auto">
-                                            <i class="material-icons text-warning">star</i>
-                                            <span class="post-seconds">4.9 <span>(254)</span></span>
-                                        </div>
-                                        <div class="col">
-                                            <i class="material-icons text-grey">schedule</i>
-                                            <span class="post-seconds">20 <span>min</span></span>
-                                        </div>
-                                        <div class="col">
-                                            <i class="material-icons text-grey">monetization_on</i>
-                                            <span class="post-seconds">40 <span>$</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="#" class="media">
-                                <div class="w-auto h-100 mr-3">
-                                    <figure class="square-60"><img src="img/small1.jpg" alt=""></figure>
-                                </div>
-                                <div class="media-body">
-                                    <p>Indian</p>
-                                    <h5>Paper Dhosa Sambhar</h5>
-                                    <p><span>Dikki & Johns</span></p>
-                                </div>
-                                <button class="like-heart color-red">
-                                    <i class="icon material-icons">favorite</i>
-                                </button>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="media">
-                                <div class="w-auto h-100 mr-3">
-                                    <figure class="square-60"><img src="img/small2.jpg" alt=""></figure>
-                                </div>
-                                <div class="media-body">
-                                    <p>American</p>
-                                    <h5>Chicken Soup</h5>
-                                    <p><span>La venta D’souza</span></p>
-                                </div>
-                                <button class="like-heart color-red">
-                                    <i class="icon material-icons">favorite_border</i>
-                                </button>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="media">
-                                <div class="w-auto h-100 mr-3">
-                                    <figure class="square-60"><img src="img/small3.jpg" alt=""></figure>
-                                </div>
-                                <div class="media-body">
-                                    <p>Chinese</p>
-                                    <h5>Manchurian Dry</h5>
-                                    <p><span>Mungli Chaipot</span></p>
-                                </div>
-                                <button class="like-heart color-red">
-                                    <i class="icon material-icons">favorite_border</i>
-                                </button>
-                            </a>
-                        </li>
-                    </ul>
+               
                     <br>
                 </div>
                 <div class="footer-wrapper">
-                    <div class="footer">
-                        <div class="row mx-0">
-                            <div class="col">
-                                MobileUX
-                            </div>
-                            <div class="col-7 text-right">
-                                <a href="#" class="social"><img src="img/facebook.png" alt=""></a>
-                                <a href="#" class="social"><img src="img/googleplus.png" alt=""></a>
-                                <a href="#" class="social"><img src="img/linkedin.png" alt=""></a>
-                                <a href="#" class="social"><img src="img/twitter.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="footer dark">
                         <div class="row mx-0">
                             <div class="col  text-center">
-                                Copyright @2018, Maxartkiller
+                                Copyright @2018, MealsBooking
                             </div>
                         </div>
                     </div>
@@ -424,10 +308,13 @@
 
     <!-- Application main common jquery file -->
     <script src="js/main.js"></script>
+    <script src="js/categories.js"></script>
+    
 
     <!-- page specific script -->
     <script>
         $(window).on('load', function() {
+        	restaurantPerCategory();
             /* tooltip */
             $(function() {
                 $('[data-toggle="tooltip"]').tooltip()
@@ -435,6 +322,7 @@
         });
 
     </script>
+    
 </body>
 
 

@@ -8,7 +8,7 @@ function getRestaurantById(idrestaurant){
 
 function restaurants(){
 	
-	var url = 'http://172.20.10.4:8000/api/restaurants';
+	var url = 'http://127.0.0.1:8000/api/restaurants';
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	
@@ -22,7 +22,7 @@ function restaurants(){
 		  var restaurant = JSON.parse(this.responseText);
 		  for (i = 0; i <restaurant.length; i++) {
 			  var image = restaurant[i].photo;
-			  row +='<div class="swiper-slide"> <figure><img src="'+image+'" alt=""></figure> <div class="block-slide"> <div class="card card-data-item"> <div class="card-body"> <div class="media"> <a href="#" class="media-body"> <p>'+restaurant[i].name+'</p> <h5>'+restaurant[i].category+' </h5> <p>'+restaurant[i].address+'</p> </a> <div class="w-auto h-100"> <a class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div> </div> </div> <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">4.9 <span>(254)</span></span> </div> <div class="col px-0"> <i class="material-icons text-grey">schedule</i> <span class="post-seconds">20 <span>min</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">40 <span>$</span></span> </div> </div> </div> </div> </div> </div> ';
+			  row +='<div class="swiper-slide"> <figure><img src="'+image+'" alt=""></figure> <div class="block-slide"> <div class="card card-data-item"> <div class="card-body"> <div class="media"> <a href="#" class="media-body"> <p>'+restaurant[i].name+'</p> <h5>'+restaurant[i].category+' </h5> <p>'+restaurant[i].address+'</p> </a> <div class="w-auto h-100"> <a class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div> </div> </div> <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">4.9 <span>(254)</span></span> </div> <div class="col px-0"> <i class="material-icons text-grey">schedule</i> <span class="post-seconds">20 <span>min</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMin+'<span>$</span></span> </div> </div> </div> </div> </div> </div> ';
 
 		  }
 		  
@@ -32,6 +32,9 @@ function restaurants(){
 	};
 xhr.send();
 }
+function saveCategoryToLS(category){
+	
+localStorage.setItem('category', category);
 
 
 
