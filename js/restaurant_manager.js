@@ -10,7 +10,7 @@ window.onload = function() {
         }
     });
     
-    restaurants();   
+    topTen();   
     
 };
 
@@ -21,9 +21,10 @@ function getRestaurantById(idrestaurant){
 	}
 
 
-function restaurants(){
+
+function topTen(){
 	
-	var url = 'http://172.20.10.4:8000/api/restaurants';
+	var url = 'http://172.20.10.4:8000/api/topten';
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	
@@ -34,27 +35,38 @@ function restaurants(){
 		
 	  if (this.status == 200 ) {
 		  
-		  var restaurant = JSON.parse(this.responseText);
-		 // console.log(restaurant[1].name); // JSON response
-		 
-		  for (i = 0; i <restaurant.length; i++) { 
-			    row = row + '<div class="card "> <div class="card-body"> <div class="media"> <a href="#" class="square-40 mr-3"><img src="'+restaurant[i].photo+'" alt=""></a> <a href="#" class="media-body"> <h5>'+restaurant[i].name+'</h5> <p>'+restaurant[i].category+'</p> </a> <a class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div> </div>       <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">4.9 <span>(254)</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMin+' <span>$</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMax+' <span>$$</span></span> </div> </div> </div></div>';  
-			 // row = row + ' <div class="card-body"> <div class="media"> <a href="#" class="square-40 mr-3"><img src="img/small1.jpg" alt=""></a> <a href="#" class="media-body"> <h5>'+restaurant[i].name+'</h5> <p>'+restaurant[i].category+'</p> </a> <a class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div>   </div> <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">4.9 <span>(254)</span></span> </div> <div class="col"> <i class="material-icons text-grey">schedule</i> <span class="post-seconds">20 <span>min</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">40 <span>$</span></span> </div> </div> </div> ';
-			  console.log('salem'+ restaurant.length);
-			  console.log(restaurant[i].name);
-
+		   var restaurant = JSON.parse(this.responseText);
+		   // console.log(restaurant[1].name); // JSON response
+		  
+		  for (i = 0; i <restaurant.length; i++) 
+		  { 
+			  var rating = 0;
+			  restaurant[i].ratings.forEach(function(item){
 		
+				  rating = rating + parseFloat(item.rating);
+				 
+			  });
+			  
+			  console.log("somme"+Math.round(rating));
+			  console.log("length"+restaurant[i].ratings.length);
+			  
+			  var ratingAverage = Math.round(rating) / restaurant[i].ratings.length;
+			  console.log("ratingAverage "+ratingAverage);
+			  
+			  if(!ratingAverage ){
+				  ratingAverage = 5
+			  }
+
+			    row = row + '<div class="card "> <div class="card-body"> <div class="media"> <a href="#" class="square-40 mr-3"><img src="'+restaurant[i].photo+'" alt=""></a> <a href="#" class="media-body"> <h5>'+restaurant[i].name+'</h5> <p>'+restaurant[i].category+'</p> <p>'+restaurant[i].address+'</p></a> <a class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div> </div>       <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds"> '+Math.round(ratingAverage)+' <span>('+restaurant[i].ratings.length+')</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMin+' <span>$</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMax+' <span>$$</span></span> </div> </div> </div></div>';  		
 			  
 		  }
 		  
-		document.getElementById("demo").innerHTML = row; 
+		document.getElementById("topten").innerHTML = row; 
 	   
 	  }
 	};
 xhr.send();
 }
-
-
 
 function detailRestaurant(){
 	
