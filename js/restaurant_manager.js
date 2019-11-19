@@ -8,7 +8,7 @@ function getRestaurantById(idrestaurant){
 
 function restaurants(){
 	
-	var url = 'http://127.0.0.1:8000/api/restaurants';
+	var url = 'http://172.20.10.4:8000/api/restaurants';
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	

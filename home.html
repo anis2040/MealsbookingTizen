@@ -915,10 +915,7 @@
     <script>
         $(window).on('load', function() {
         
-		    restaurants(); 
-		    topTen();   
-		    detailRestaurant();
-		    
+		
             /*Swiper carousel */
             $('.nav-tabs a[href="#nav-cart"]').click(function() {
                 setTimeout(function() {
@@ -979,6 +976,11 @@
             $(function() {
                 $('[data-toggle="tooltip"]').tooltip()
             });
+            
+            restaurants(); 
+		    topTen();   
+		    detailRestaurant();
+		    
         });
 
     </script>
