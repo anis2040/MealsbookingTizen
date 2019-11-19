@@ -299,7 +299,6 @@
                                     <div class="swiper-pagination"></div>
    									<div class="swiper-wrapper" id="resto">
                          
-
                                         <div class="swiper-slide">
                                     
                                         </div>
@@ -684,74 +683,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <h2 class="block-title color-dark">Item in cart</h2>
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <a href="#" class="media">
-                                        <div class="w-auto h-100 mr-3">
-                                            <figure class="square-60"><img src="img/small1.jpg" alt=""></figure>
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Indian</p>
-                                            <h5>Paper Dhosa Sambhar</h5>
-                                            <p><span>Dikki & Johns</span></p>
-                                        </div>
-                                        <button class="like-heart color-red">
-                                            <i class="icon material-icons">delete</i>
-                                        </button>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="media">
-                                        <div class="w-auto h-100 mr-3">
-                                            <figure class="square-60"><img src="img/small2.jpg" alt=""></figure>
-                                        </div>
-                                        <div class="media-body">
-                                            <p>American</p>
-                                            <h5>Chicken Soup</h5>
-                                            <p><span>La venta D’souza</span></p>
-                                        </div>
-                                        <button class="like-heart color-red">
-                                            <i class="icon material-icons">delete</i>
-                                        </button>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="#" class="media">
-                                        <div class="w-auto h-100 mr-3">
-                                            <figure class="square-60"><img src="img/small3.jpg" alt=""></figure>
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Chinese</p>
-                                            <h5>Manchurian Dry</h5>
-                                            <p><span>Mungli Chaipot</span></p>
-                                        </div>
-                                        <button class="like-heart color-red">
-                                            <i class="icon material-icons">delete</i>
-                                        </button>
-                                    </a>
-                                </li>
+                            <h2 class="block-title color-dark">Reservations</h2>
+                            <ul class="list-group" id="reservation">
+                            
+                          
                             </ul>
-                            <div class="row mx-0">
-                                <div class="col-12">
-                                    <p class="my-2">Order <b class="float-right">$150</b></p>
-                                    <p class="my-2">Delivery <b class="float-right">$50</b></p>
-                                    <hr class="my-2">
-                                    <h5 class="mt-0">Summary <b class="float-right">$200</b></h5>
-                                </div>
-                            </div>
+                   
                             <br>
-                            <div class="row mx-0">
-                                <div class="col">
-                                    <a href="#" class=" btn-block border-0 btn gradient md-elevation-6">Submit Order</a>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row mx-0">
-                                <div class="col">
-                                    <a href="#" class=" btn btn-block btn-outline-secondary ">Clear cart</a>
-                                </div>
-                            </div>
+                      
                             <br>
                         </div>
                     </div>
@@ -908,6 +847,7 @@
     
     <!-- webservice -->
      <script src="js/restaurant_manager.js"></script>
+     <script src="js/reservation.js"></script>
 
 
     <!-- page specific script -->
@@ -979,7 +919,8 @@
             
             restaurants(); 
 		    topTen();   
-		    detailRestaurant();
+		   // detailRestaurant();
+		    	reservations();
 		    
         });
 
