@@ -918,13 +918,17 @@
     
     <!-- webservice -->
      <script src="js/restaurant_manager.js"></script>
-<!--      <script src="js/list_restaurant.js"></script>
- -->
+
+
     <!-- page specific script -->
 
     <script>
         $(window).on('load', function() {
-
+        
+		    restaurants(); 
+		    topTen();   
+		    detailRestaurant();
+		    
             /*Swiper carousel */
             $('.nav-tabs a[href="#nav-cart"]').click(function() {
                 setTimeout(function() {

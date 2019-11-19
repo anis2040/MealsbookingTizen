@@ -27,7 +27,7 @@
     <title>MealsBooking</title>
 </head>
 
-<body class="color-theme-yellow push-content-right theme-light">
+<body  class="color-theme-yellow push-content-right theme-light">
     <div class="loader justify-content-center ">
         <div class="maxui-roller align-self-center"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
@@ -279,9 +279,9 @@
                                     <div class="card-body">
                                         <div class="media">
                                             <a href="#" class="media-body">
-                                                <p>Indian</p>
-                                                <h5>Paper Dhosa Sambhar </h5>
-                                                <p>Dikki &amp; Johns</p>
+                                                <p id="category"></p>
+                                                <h5 id="name"></h5>
+                                                <p id="address"></p>
                                             </a>
                                             <div class="w-auto h-100">
                                                 <a class="like-heart color-red">
@@ -336,7 +336,7 @@
 
                     <div class="row mx-0">
                         <div class="col">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p id="description"></p>
                             <div class="image-left-list location-ammenities">
                                 <ul class="list-group ">
                                     <li class=" list-group-item">
@@ -401,9 +401,9 @@
                                     <figure class="square-60"><img src="img/small1.jpg" alt=""></figure>
                                 </div>
                                 <div class="media-body">
-                                    <p>Indian</p>
-                                    <h5>Paper Dhosa Sambhar</h5>
-                                    <p><span>Dikki & Johns</span></p>
+                                    <p id="category"></p>
+                                    <h5 id="name"></h5>
+                                    <p id="address"><span></span></p>
                                 </div>
                                 <button class="like-heart color-red">
                                     <i class="icon material-icons">favorite_border</i>
@@ -557,11 +557,17 @@
 
     <!-- Application main common jquery file -->
     <script src="js/main.js"></script>
+    
+    <script src="js/restaurant_detail.js"></script>
+
+    
+    
+    
 
     <!-- page specific script -->
     <script>
         $(window).on('load', function() {
-
+			detailRestaurant();
             /*Swiper carousel */
             var mySwiper = new Swiper('.featured-restaurant', {
                 slidesPerView: 'auto',
