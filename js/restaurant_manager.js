@@ -13,8 +13,8 @@ window.onload = function() {
     // add eventListener for tizenhwkey    
     restaurants(); 
     
-    topTen();   
-    
+    topTen();
+        
 };
 
 function getRestaurantById(idrestaurant){
@@ -50,33 +50,13 @@ function restaurants(){
 	};
 xhr.send();
 }
-
-
-function restaurantPerCategory(category){
+function saveCategoryToLS(category){
 	
-	var url = 'http://127.0.0.1:8000/api/restaurant-category/'+category;
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', url, true);
-	
-	xhr.onload = function() {
-		var i=0;
-		var row="";
-		 // var userid = localStorage.getItem("userid");
-		
-	  if (this.status == 200 ) {
-		  
-		  var restaurant = JSON.parse(this.responseText);
-//		  for (i = 0; i <restaurant.length; i++) {
-//
-//		  }
-		  
-	  //document.getElementById("resto").innerHTML = row;  
-	    console.log('lols', restaurant); // JSON response  
-	    window.location.href = "categories.html";
-	  }
-	};
-xhr.send();
+localStorage.setItem('category', category);
+
 }
+
+
 
 
 function detailRestaurant(){

@@ -21,6 +21,7 @@
 
     <!-- app CSS -->
     <link id="theme" rel="stylesheet" href="css/style.css" type="text/css">
+    
 
 
     <title>MobileUX</title>
@@ -319,34 +320,34 @@
                                 <div data-space-between="5" data-slides-per-view="auto" class="swiper-container swiper-init swipermultiple categories demo-swiper-auto mb-0 p-0">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
-                                            <a href="#" onclick="restaurantPerCategory('Tunisian')" class="swiper-content-block ">
+                                            <a href="categories.html" onclick="saveCategoryToLS('Tunisian')" class="swiper-content-block ">
                                                 <figure><img src="img/small1.jpg"></figure>
                                             </a>
                                             <p>Tunisian</p>
                                         </div>
                                         <div class="swiper-slide">
-                                            <a href="restaurantPerCategory('Tunisian')" class="swiper-content-block ">
+                                            <a href="categories.html" onclick="saveCategoryToLS('French')" class="swiper-content-block ">
                                                 <figure><img src="img/small4.jpg"></figure>
                                             </a>
-                                            <p>Chinese</p>
+                                            <p>French</p>
                                         </div>
                                         <div class="swiper-slide">
-                                            <a href="categories.html" class="swiper-content-block">
+                                            <a href="categories.html" onclick="saveCategoryToLS('American')" class="swiper-content-block">
                                                 <figure><img src="img/small2.jpg"></figure>
                                             </a>
-                                            <p>America</p>
+                                            <p>American</p>
                                         </div>
                                         <div class="swiper-slide">
-                                            <a href="categories.html" class="swiper-content-block ">
+                                            <a href="categories.html" onclick="saveCategoryToLS('Maxican')" class="swiper-content-block ">
                                                 <figure><img src="img/small3.jpg"></figure>
                                             </a>
-                                            <p>Maxicon</p>
+                                            <p>Maxican</p>
                                         </div>
                                         <div class="swiper-slide">
-                                            <a href="categories.html" class="swiper-content-block ">
+                                            <a href="categories.html" onclick="saveCategoryToLS('Italian')" class="swiper-content-block ">
                                                 <figure><img src="img/small1.jpg"></figure>
                                             </a>
-                                            <p>Indian</p>
+                                            <p>Italian</p>
                                         </div>
                                         <div class="swiper-slide">
                                             <a href="categories.html" class="swiper-content-block ">
@@ -354,18 +355,7 @@
                                             </a>
                                             <p>Chinese</p>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <a href="categories.html" class="swiper-content-block ">
-                                                <figure><img src="img/small2.jpg"></figure>
-                                            </a>
-                                            <p>America</p>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a href="categories.html" class="swiper-content-block ">
-                                                <figure><img src="img/small3.jpg"></figure>
-                                            </a>
-                                            <p>Maxicon</p>
-                                        </div>
+                                  
                                     </div>
                                 </div>
                             </div>
@@ -917,77 +907,16 @@
     <script src="js/main.js"></script>
     
     <!-- webservice -->
-     <script src="js/restaurant_manager.js"></script>
-<!--      <script src="js/list_restaurant.js"></script>
- -->
+         <script src="js/restaurant_manager.js"></script>
+
     <!-- page specific script -->
 
     <script>
-        $(window).on('load', function() {
-
-            /*Swiper carousel */
-            $('.nav-tabs a[href="#nav-cart"]').click(function() {
-                setTimeout(function() {
-                    var mySwiper4 = new Swiper('.carstcarousel', {
-                        slidesPerView: 1,
-                        spaceBetween: 0,
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true,
-                        }
-                    });
-                }, 800)
-
-            });
-            /*Swiper carousel */
-            $('.nav-tabs a[href="#nav-profile"]').click(function() {
-                setTimeout(function() {
-                    var mySwiper5 = new Swiper('.userprofilehome', {
-                        slidesPerView: 2,
-                        spaceBetween: 0,
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true,
-                        }
-                    });
-                }, 800)
-
-            });
-            /*Swiper carousel */
-            var mySwiper3 = new Swiper('.mostviewed', {
-                slidesPerView: 2,
-                spaceBetween: 0,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                }
-            });
-
-            /*Swiper carousel */
-            var mySwiper2 = new Swiper('.categories', {
-                slidesPerView: 'auto',
-                spaceBetween: 0,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                }
-            });
-            /*Swiper carousel */
-            var mySwiper1 = new Swiper('.homepage-restaurant', {
-                slidesPerView: 1,
-                spaceBetween: 15,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                }
-            });
-            /* tooltip */
-            $(function() {
-                $('[data-toggle="tooltip"]').tooltip()
-            });
-        });
+       
 
     </script>
+    
+    
 </body>
 
 
