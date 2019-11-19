@@ -32,11 +32,12 @@ function restaurants(){
 	};
 xhr.send();
 }
+
 function saveCategoryToLS(category){
 	
 localStorage.setItem('category', category);
 
-
+}
 
 function topTen(){
 	
