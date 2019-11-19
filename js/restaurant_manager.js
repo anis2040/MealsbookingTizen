@@ -1,20 +1,12 @@
-/*
+
 window.onload = function() {
     // TODO:: Do your initialization job
 
-    // add eventListener for tizenhwkey
-    document.addEventListener('tizenhwkey', function(e) {
-        if (e.keyName === "back") {
-            try {
-                tizen.application.getCurrentApplication().exit();
-            } catch (ignore) {}
-        }
-    });
-    
-    restaurants();  test 
+    // add eventListener for tizenhwkey    
+    restaurants(); 
     
 };
-*/
+
 function getRestaurantById(idrestaurant){
 		
 		localStorage.setItem('id_restaurant', idrestaurant);
@@ -35,16 +27,14 @@ function restaurants(){
 	  if (this.status == 200 ) {
 		  
 		  var restaurant = JSON.parse(this.responseText);
-		  for (i = 0; i <restaurant.missions.length; i++) { 
-			  
-			
-			  row = row+'  <section class="container">  <section class="box special" ><h3><a href="detailsmission.html" onclick="getidmission('+mission.missions[i].id+')"><p>'+mission.missions[i].title+'</p><p>'+mission.missions[i].description+'</p><p>'+mission.missions[i].date+'</p><p>'+mission.missions[i].total+'</p><h3></section></section>';  
-			 
-		  
+		  for (i = 0; i <restaurant.length; i++) {
+			  var image = restaurant[i].photo;
+			  row +='<div class="swiper-slide"> <figure><img src="'+image+'" alt=""></figure> <div class="block-slide"> <div class="card card-data-item"> <div class="card-body"> <div class="media"> <a href="#" class="media-body"> <p>Indian</p> <h5>Paper Dhosa Sambhar </h5> <p>Dikki & Johns</p> </a> <div class="w-auto h-100"> <a class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div> </div> </div> <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">4.9 <span>(254)</span></span> </div> <div class="col px-0"> <i class="material-icons text-grey">schedule</i> <span class="post-seconds">20 <span>min</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">40 <span>$</span></span> </div> </div> </div> </div> </div> </div> ';
+
 		  }
 		  
-		document.getElementById("demo").innerHTML = row; 
-	    console.log('response', this.response); // JSON response  
+	  document.getElementById("resto").innerHTML = row;  
+	    console.log('html', row); // JSON response  
 	  }
 	};
 xhr.send();
