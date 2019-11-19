@@ -1,6 +1,14 @@
 
 window.onload = function() {
     // TODO:: Do your initialization job
+    // add eventListener for tizenhwkey
+    document.addEventListener('tizenhwkey', function(e) {
+        if (e.keyName === "back") {
+            try {
+                tizen.application.getCurrentApplication().exit();
+            } catch (ignore) {}
+        }
+    });
 
     // add eventListener for tizenhwkey    
     restaurants(); 
@@ -16,14 +24,15 @@ function getRestaurantById(idrestaurant){
 
 function restaurants(){
 	
-	var url = 'http://127.0.0.1:8000/api/restaurants';
+	var url = 'http://172.20.10.4:8000/api/restaurants';
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
+	
 	xhr.onload = function() {
 		var i=0;
 		var row="";
 		 // var userid = localStorage.getItem("userid");
-
+		
 	  if (this.status == 200 ) {
 		  
 		  var restaurant = JSON.parse(this.responseText);
@@ -92,7 +101,7 @@ function detailRestaurant(){
 		        document.getElementById("total").innerHTML= total;
 			  
 			  
-	   // console.log('response', this.response); // JSON response  
+	   
 	  }
 	};
 xhr.send();

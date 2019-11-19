@@ -1,4 +1,4 @@
-/*
+
 window.onload = function() {
     // TODO:: Do your initialization job
 
@@ -15,7 +15,7 @@ window.onload = function() {
     
 };
 
-*/
+
   function login(){
 
 	  
@@ -24,6 +24,7 @@ window.onload = function() {
 	var http = new XMLHttpRequest();
 	var url = 'http://127.0.0.1:8000/api/login';
 	var params = "username="+username+"&password="+password;
+	
 	http.open('POST', url, true);
 	
 	
