@@ -22,7 +22,15 @@
 
     <!-- app CSS -->
     <link id="theme" rel="stylesheet" href="css/style.css" type="text/css">
+    
+    
+      <link href="dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
 
+
+ 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	
 
     <title>MealsBooking</title>
 </head>
@@ -338,6 +346,7 @@
                         <div class="col">
                             <p id="description"></p>
                             <div class="image-left-list location-ammenities">
+                            
                                 <ul class="list-group ">
                                     <li class=" list-group-item">
                                         <div class="media">
@@ -390,9 +399,18 @@
                     <h2 class="block-title color-dark">Map</h2>
                     <div class="row mx-0">
                         <div class="col">
-                            <iframe src="https://maps.google.com/maps?q=35.856737, 10.606619&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0" allowfullscreen class="map"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.4048756797324!2d73.75623469782012!3d15.550255712931143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfba106336b741%3A0xeaf887ff62f34092!2sGoa!5e0!3m2!1sen!2sin!4v1537698422562" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen class="map"></iframe>
                         </div>
                     </div>
+                    
+                     <div class=" footer row mx-0  mt-3">
+                        <div class="col ml-4">
+                        <div class="datepicker-here" data-timepicker="true" data-language='en'></div>
+                        </div>
+                    </div>
+                    
+                                               
+                    
                     <h2 class="block-title color-dark">Most Popular</h2>
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -514,44 +532,9 @@
                     </div>
                     <br>
                 </div>
-                <div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker5'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker5').datetimepicker({
-                    defaultDate: "11/1/2013",
-                    disabledDates: [
-                        moment("12/25/2013"),
-                        new Date(2013, 11 - 1, 21),
-                        "11/22/2013 00:53"
-                    ]
-                });
-            });
-        </script>
-    </div>
-</div>
+                
                 <div class="footer-wrapper">
-                    <div class="footer">
-                        <div class="row mx-0">
-                            <div class="col">
-                                MealsBooking
-                            </div>
-                            <div class="col-7 text-right">
-                                <a href="#" class="social"><img src="img/facebook.png" alt=""></a>
-                                <a href="#" class="social"><img src="img/twitter.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="footer dark">
                         <div class="row mx-0">
                             <div class="col text-center">
@@ -584,11 +567,18 @@
     <!-- Application main common jquery file -->
     <script src="js/main.js"></script>
     
-    
-    
-    
     <script src="js/restaurant_detail.js"></script>
 
+     <!-- jQuery first, then Popper.js, then Bootstrap JS, then Propeller js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	  <script type="text/javascript" src="js/propeller.min.js"></script>
+    
+    <script src="dist/js/datepicker.min.js"></script>
+
+        <!-- Include English language -->
+        <script src="dist/js/i18n/datepicker.en.js"></script>
     
     
     
