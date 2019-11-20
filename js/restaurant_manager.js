@@ -21,8 +21,30 @@ function restaurants(){
 		  
 		  var restaurant = JSON.parse(this.responseText);
 		  for (i = 0; i <restaurant.length; i++) {
+			  
 			  var image = restaurant[i].photo;
-			  row +='<div class="swiper-slide"> <figure><img src="'+image+'" alt=""></figure> <div class="block-slide"> <div class="card card-data-item"> <div class="card-body"> <div class="media"> <a href="restaurant.html" onclick="getRestaurantById('+restaurant[i].id+')" class="media-body"> <p>'+restaurant[i].name+'</p> <h5>'+restaurant[i].category+' </h5> <p>'+restaurant[i].address+'</p> </a> <div class="w-auto h-100"> </div> </div> </div> <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">4.9 <span>(254)</span></span> </div> <div class="col px-0"> <i class="material-icons text-grey">schedule</i> <span class="post-seconds">20 <span>min</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMin+'<span>$</span></span> </div> </div> </div> </div> </div> </div> ';
+			  
+			  var rating = 0;
+			  restaurant[i].ratings.forEach(function(item){
+		
+				  rating = rating + parseFloat(item.rating);
+				 
+			  });
+			  
+			  console.log("somme"+Math.round(rating));
+			  console.log("length"+restaurant[i].ratings.length);
+			  
+			  var ratingAverage = Math.round(rating) / restaurant[i].ratings.length;
+			  console.log("ratingAverage "+ratingAverage);
+			  
+			  if(!ratingAverage ){
+				  ratingAverage = 5
+			  }
+			  
+			  
+			  
+			  
+			  row +='<div class="swiper-slide"> <figure><img src="'+image+'" alt=""></figure> <div class="block-slide"> <div class="card card-data-item"> <div class="card-body"> <div class="media"> <a href="restaurant.html" onclick="getRestaurantById('+restaurant[i].id+')" class="media-body"> <p>'+restaurant[i].name+'</p> <h5>'+restaurant[i].category+' </h5> <p>'+restaurant[i].address+'</p> </a> <div class="w-auto h-100"> </div> </div> </div> <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">'+Math.round(ratingAverage)+' <span>('+Math.round(ratingAverage)+')</span></span> </div> <div class="col px-0">  <span class="post-seconds">'+restaurant[i].priceMin+'<span>$</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMax+'<span>$$</span></span> </div> </div> </div> </div> </div> </div> ';
 
 		  }
 		  

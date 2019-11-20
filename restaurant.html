@@ -317,7 +317,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="javascript:void(0)" class="btn btn-block gradient border-0 z-3">Continue Booking</a>
+                       
                     </div>
                     <br>
                     <h2 class="block-title color-dark">All Menus</h2>
@@ -406,9 +406,17 @@
                      <div class=" footer row mx-0  mt-3 mb-8">
                         <div class="col ml-4">
                         <div class="datepicker-here" data-timepicker="true" data-language='en' id='timepicker-actions-exmpl'></div>
+                        <h2 class="block-title color-dark">Number of person</h2>
+                        <select class="browser-default custom-select" id="numberPerson">
+							  <option selected value="1">One person</option>
+							  <option value="2">Two person</option>
+							  <option value="3">Three person</option>
+					          <option value="s4">four person</option>
+							  
+							</select>
                         </div>
                         
-                        <a href="javascript:void(0)" class="btn btn-block gradient border-0 mt-3 ">Book a Table</a>
+                        <a href="javascript:void(0)" class="btn btn-block gradient border-0 mt-3 " onclick="reserver()">Book a Table</a>
                     </div>
                    
                     	
@@ -579,6 +587,7 @@
     <script src="dist/js/i18n/datepicker.en.js"></script>
     
     <script>
+    var datetime = 0 ; 
     // Create start date
     var start = new Date(),
         prevDay,
@@ -594,7 +603,8 @@
         startHours = 10
     }
 
-    $('#timepicker-actions-exmpl').datepicker({
+    var date = () => {
+     $('#timepicker-actions-exmpl').datepicker({
         timepicker: true,
         language: 'en',
         startDate: start,
@@ -608,7 +618,9 @@
            var currentDate  = new Date();
            
 			console.log(currentDate);
-			console.log(fd);
+			
+			this.datetime = fd;
+			console.log(this.datetime);
 			
             // Trigger only if date is changed
             if (prevDay != undefined && prevDay == day) return;
@@ -628,7 +640,37 @@
                 })
             }
         }
+        return this.datatime;
     })
+    };
+    function reserver(){
+    	    alert(date);
+    
+	    var e = document.getElementById("numberPerson");
+	    console.log(e);
+	    console.log("salem"+this.datetime);
+	    var nbpValue = e.options[e.selectedIndex].text;
+	    console.log(nbpValue);
+	    
+	    var http = new XMLHttpRequest();
+		var url = 'http://172.20.10.4:8000/api/reservation';
+		
+		var params = "name=chakib&time="+this.datetime+"&nbperson="+nbpValue+"&restaurant_id=1";
+		http.open('POST', url, true);
+
+		//Send the proper header information along with the request
+		http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+		http.onreadystatechange = function() {//Call a function when the state changes.
+		    if(http.readyState == 4 && http.status == 200) {
+		        	window.location.href='home.html';
+		    }
+		}
+		http.send(params);
+		
+    }
+    
+    
 </script>
     
 
