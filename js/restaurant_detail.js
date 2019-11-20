@@ -47,16 +47,6 @@ function detailRestaurant(){
 				 
 			  });
 			  
-			  console.log("somme"+Math.round(rating));
-			  console.log("length"+restaurant[i].ratings.length);
-			  
-			  var ratingAverage = Math.round(rating) / restaurant[i].ratings.length;
-			  console.log("ratingAverage "+ratingAverage);
-			  
-			  if(!ratingAverage ){
-				  ratingAverage = 5
-			  }
-			  
 /*
 			  restaurant.menu.forEach(function(item){
 					
