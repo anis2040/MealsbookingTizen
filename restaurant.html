@@ -22,9 +22,104 @@
 
     <!-- app CSS -->
     <link id="theme" rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+	
+/*
+=====
+LEVEL 1. CORE STYLES OF MODIFIERS
+=====
+*/
 
+.rating{
+	--uiRatingSize: var(--ratingSize, 20px);
+	--uiRatingColor: var(--ratingColor, #eee);
+	--uiRatingColorActive: var(--ratingColorActive, #ffcc00);
+	--uiRatingStroke: var(--ratingStroke, #222);
+	--uiRatingStrokeWidth: var(--ratingStrokeWidth, 1px);
 
-    <title>MealsBooking</title>
+	display: flex;
+  font-size: var(--uiRatingSize);
+	color: var(--uiRatingColor);
+  position: relative;
+}
+
+.rating__control{
+	position: absolute;
+	left: -9999px;
+}
+
+.rating__control:nth-of-type(1):focus ~ .rating__item:nth-of-type(1):before,
+.rating__control:nth-of-type(2):focus ~ .rating__item:nth-of-type(2):before,
+.rating__control:nth-of-type(3):focus ~ .rating__item:nth-of-type(3):before,
+.rating__control:nth-of-type(4):focus ~ .rating__item:nth-of-type(4):before,
+.rating__control:nth-of-type(5):focus ~ .rating__item:nth-of-type(5):before{
+  content: ""; 
+  box-shadow: 0 0 0 4px var(--uiRatingColorActive);
+  
+  position: absolute;
+  top: -.15em;
+  right: 0;
+  bottom: -.15em;
+  left: 0;
+  z-index: -1;
+}
+
+.rating__item{
+	-webkit-tap-highlight-color: transparent;
+  cursor: pointer;  
+  position: relative;
+}
+
+.rating__item{
+	padding-left: .25em;
+  padding-right: .25em;
+}
+
+.rating__star{
+	display: block;
+	width: 1em;
+	height: 1em;
+
+	fill: currentColor;
+	stroke: var(--uiRatingStroke);
+	stroke-width: var(--uiRatingStrokeWidth);
+}
+
+.rating__label{
+	position: absolute;
+	top: 0;
+	left: -9999px;
+}
+
+.rating:hover,
+.rating__control:nth-of-type(1):checked ~ .rating__item:nth-of-type(1),
+.rating__control:nth-of-type(2):checked ~ .rating__item:nth-of-type(-n+2),
+.rating__control:nth-of-type(3):checked ~ .rating__item:nth-of-type(-n+3),
+.rating__control:nth-of-type(4):checked ~ .rating__item:nth-of-type(-n+4),
+.rating__control:nth-of-type(5):checked ~ .rating__item:nth-of-type(-n+5){
+	color: var(--uiRatingColorActive);
+}
+
+.rating__item:hover ~ .rating__item{
+  color: var(--uiRatingColor);
+}
+
+/*
+=====
+LEVEL 2. SETTINGS
+=====
+*/
+
+.rating{
+  --ratingSize: 30px;
+  --ratingColor: #eee;
+	--ratingColorActive: #ffcc00;
+}
+
+	</style>
+    
+
+<title>MealsBooking</title>
 </head>
 
 <body  class="color-theme-yellow push-content-right theme-light">
@@ -393,56 +488,7 @@
                             <iframe src="https://maps.google.com/maps?q=35.856737, 10.606619&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0" allowfullscreen class="map"></iframe>
                         </div>
                     </div>
-                    <h2 class="block-title color-dark">Most Popular</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="#" class="media">
-                                <div class="w-auto h-100 mr-3">
-                                    <figure class="square-60"><img src="img/small1.jpg" alt=""></figure>
-                                </div>
-                                <div class="media-body">
-                                    <p id="category"></p>
-                                    <h5 id="name"></h5>
-                                    <p id="address"><span></span></p>
-                                </div>
-                                <button class="like-heart color-red">
-                                    <i class="icon material-icons">favorite_border</i>
-                                </button>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="media">
-                                <div class="w-auto h-100 mr-3">
-                                    <figure class="square-60"><img src="img/small2.jpg" alt=""></figure>
-                                </div>
-                                <div class="media-body">
-                                    <p>American</p>
-                                    <h5>Chicken Soup</h5>
-                                    <p><span>La venta D’souza</span></p>
-                                </div>
-                                <button class="like-heart color-red">
-                                    <i class="icon material-icons">favorite</i>
-                                </button>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="media">
-                                <div class="w-auto h-100 mr-3">
-                                    <figure class="square-60"><img src="img/small3.jpg" alt=""></figure>
-                                </div>
-                                <div class="media-body">
-                                    <p>Chinese</p>
-                                    <h5>Manchurian Dry</h5>
-                                    <p><span>Mungli Chaipot</span></p>
-                                </div>
-                                <button class="like-heart color-red">
-                                    <i class="icon material-icons">favorite_border</i>
-                                </button>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h2 class="block-title color-dark">Most Viewed</h2>
+					<h2 class="block-title color-dark">Most Viewed</h2>
                     <div class="carosel">
                         <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="0" data-slides-per-view="2" class="swiper-container swiper-init swipermultiple mostviewed">
                             <div class="swiper-pagination"></div>
@@ -498,16 +544,77 @@
                             </div>
                         </div>
                     </div>
+                    
+ 	               <h2 class="block-title color-dark">Reviews</h2>
+                    <ul class="list-group" id="rating">
+
+                
+                    </ul>
+					<br><br>
+                    	
+
+				<div class="page">
+  <div class="page__demo">
+    <div class="page__group">
+      <div class="rating">
+        <input type="radio" name="rating-star" class="rating__control" id="rc1" onclick="saveRatingToLS(1)">
+        <input type="radio" name="rating-star" class="rating__control" id="rc2" onclick="saveRatingToLS(2)">
+        <input type="radio" name="rating-star" class="rating__control" id="rc3" onclick="saveRatingToLS(3)">
+        <input type="radio" name="rating-star" class="rating__control" id="rc4" onclick="saveRatingToLS(4)">
+        <input type="radio" name="rating-star" class="rating__control" id="rc5" onclick="saveRatingToLS(5)">
+        <label for="rc1" class="rating__item">
+          <svg class="rating__star">
+            <use xlink:href="#star"></use>
+          </svg>
+          <span class="rating__label">1</span>
+        </label>
+        <label for="rc2" class="rating__item">
+          <svg class="rating__star">
+            <use xlink:href="#star"></use>
+          </svg>
+          <span class="rating__label">2</span>
+        </label>
+        <label for="rc3" class="rating__item">
+          <svg class="rating__star">
+            <use xlink:href="#star"></use>
+          </svg>
+          <span class="rating__label">3</span>
+        </label>
+        <label for="rc4" class="rating__item">
+          <svg class="rating__star">
+            <use xlink:href="#star"></use>
+          </svg>
+          <span class="rating__label">4</span>
+        </label>
+        <label for="rc5" class="rating__item">
+          <svg class="rating__star">
+            <use xlink:href="#star"></use>
+          </svg>
+          <span class="rating__label">5</span>
+        </label>	
+      </div>
+      <span class="page__hint">Select your rating</span>
+    </div>
+   
+  </div>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="star" viewBox="0 0 26 28">
+    <path d="M26 10.109c0 .281-.203.547-.406.75l-5.672 5.531 1.344 7.812c.016.109.016.203.016.313 0 .406-.187.781-.641.781a1.27 1.27 0 0 1-.625-.187L13 21.422l-7.016 3.687c-.203.109-.406.187-.625.187-.453 0-.656-.375-.656-.781 0-.109.016-.203.031-.313l1.344-7.812L.39 10.859c-.187-.203-.391-.469-.391-.75 0-.469.484-.656.875-.719l7.844-1.141 3.516-7.109c.141-.297.406-.641.766-.641s.625.344.766.641l3.516 7.109 7.844 1.141c.375.063.875.25.875.719z"/>
+  </symbol>
+</svg>
+
+
 
                     <h2 class="block-title color-dark">Add Comment</h2>
                     <div class="row mx-0">
                         <div class="col">
                             <div class="login-input-content">
-                                <textarea class="form-control" rows="3" placeholder="Write your comment here..."></textarea>
+                                <textarea id="review" class="form-control" rows="3" placeholder="Write your comment here..."></textarea>
                             </div>
                             <div class="row mx-0 justify-content-end no-gutters">
                                 <div class="col">
-                                    <a href="javascript:void(0)" class="btn btn-block gradient border-0 z-3">Submit</a>
+                                    <a href="javascript:void(0)" onclick="saveReview()" class="btn btn-block gradient border-0 z-3">Submit</a>
                                 </div>
                             </div>
                         </div>
@@ -526,18 +633,7 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker5').datetimepicker({
-                    defaultDate: "11/1/2013",
-                    disabledDates: [
-                        moment("12/25/2013"),
-                        new Date(2013, 11 - 1, 21),
-                        "11/22/2013 00:53"
-                    ]
-                });
-            });
-        </script>
+       
     </div>
 </div>
                 <div class="footer-wrapper">
@@ -546,10 +642,7 @@
                             <div class="col">
                                 MealsBooking
                             </div>
-                            <div class="col-7 text-right">
-                                <a href="#" class="social"><img src="img/facebook.png" alt=""></a>
-                                <a href="#" class="social"><img src="img/twitter.png" alt=""></a>
-                            </div>
+                         
                         </div>
                     </div>
                     <div class="footer dark">
@@ -583,6 +676,7 @@
 
     <!-- Application main common jquery file -->
     <script src="js/main.js"></script>
+     <script src="js/rating.js"></script>
     
     
     
@@ -597,6 +691,7 @@
     <script>
         $(window).on('load', function() {
 			detailRestaurant();
+			ratings();
             /*Swiper carousel */
             var mySwiper = new Swiper('.featured-restaurant', {
                 slidesPerView: 'auto',
