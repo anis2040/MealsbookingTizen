@@ -26,19 +26,18 @@
     
       <link href="dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
 
-.rating{
-	--uiRatingSize: var(--ratingSize, 20px);
-	--uiRatingColor: var(--ratingColor, #eee);
-	--uiRatingColorActive: var(--ratingColorActive, #ffcc00);
-	--uiRatingStroke: var(--ratingStroke, #222);
-	--uiRatingStrokeWidth: var(--ratingStrokeWidth, 1px);
+
 
  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
-	
 
-    <title>MealsBooking</title>
+    <style>
+   .rating{
+--uiRatingSize: var(--ratingSize, 20px);
+--uiRatingColor: var(--ratingColor, #eee);
+--uiRatingColorActive: var(--ratingColorActive, #ffcc00);
+--uiRatingStroke: var(--ratingStroke, #222);
+--uiRatingStrokeWidth: var(--ratingStrokeWidth, 1px);
 	display: flex;
   font-size: var(--uiRatingSize);
 	color: var(--uiRatingColor);
@@ -512,21 +511,7 @@ LEVEL 2. SETTINGS
                    
                     <h2 class="block-title color-dark">Most Popular</h2>
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="#" class="media">
-                                <div class="w-auto h-100 mr-3">
-                                    <figure class="square-60"><img src="img/small1.jpg" alt=""></figure>
-                                </div>
-                                <div class="media-body">
-                                    <p id="category"></p>
-                                    <h5 id="name"></h5>
-                                    <p id="address"><span></span></p>
-                                </div>
-                                <button class="like-heart color-red">
-                                    <i class="icon material-icons">favorite_border</i>
-                                </button>
-                            </a>
-                        </li>
+                      
                         <li class="list-group-item">
                             <a href="#" class="media">
                                 <div class="w-auto h-100 mr-3">
@@ -738,88 +723,7 @@ LEVEL 2. SETTINGS
     <script src="dist/js/i18n/datepicker.en.js"></script>
     
     <script>
-    var datetime = 0 ; 
-    // Create start date
-    var start = new Date(),
-        prevDay,
-        startHours = 9;
-
-    // 09:00 AM
-    start.setHours(0);
-    start.setMinutes(0);
-
-    // If today is Saturday or Sunday set 10:00 AM
-    if ([6, 0].indexOf(start.getDay()) != -1) {
-        start.setHours(10);
-        startHours = 10
-    }
-
-    var date = () => {
-     $('#timepicker-actions-exmpl').datepicker({
-        timepicker: true,
-        language: 'en',
-        startDate: start,
-        minHours: startHours,
-        maxHours: 23,
-        onSelect: function (fd, d, picker) {
-            // Do nothing if selection was cleared
-            if (!d) return;
-
-            var day = d.getDay();
-           var currentDate  = new Date();
-           
-			console.log(currentDate);
-			
-			this.datetime = fd;
-			console.log(this.datetime);
-			
-            // Trigger only if date is changed
-            if (prevDay != undefined && prevDay == day) return;
-            prevDay = day;
-
-            // If chosen day is Saturday or Sunday when set
-            // hour value for weekends, else restore defaults
-            if (day == 6 || day == 0) {
-                picker.update({
-                    minHours: 10,
-                    maxHours: 23
-                })
-            } else {
-                picker.update({
-                    minHours: 8,
-                    maxHours: 23
-                })
-            }
-        }
-        return this.datatime;
-    })
-    };
-    function reserver(){
-    	    alert(date);
     
-	    var e = document.getElementById("numberPerson");
-	    console.log(e);
-	    console.log("salem"+this.datetime);
-	    var nbpValue = e.options[e.selectedIndex].text;
-	    console.log(nbpValue);
-	    
-	    var http = new XMLHttpRequest();
-		var url = 'http://172.20.10.4:8000/api/reservation';
-		
-		var params = "name=chakib&time="+this.datetime+"&nbperson="+nbpValue+"&restaurant_id=1";
-		http.open('POST', url, true);
-
-		//Send the proper header information along with the request
-		http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-		http.onreadystatechange = function() {//Call a function when the state changes.
-		    if(http.readyState == 4 && http.status == 200) {
-		        	window.location.href='home.html';
-		    }
-		}
-		http.send(params);
-		
-    }
     
     
 </script>

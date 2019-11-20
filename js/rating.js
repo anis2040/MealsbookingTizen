@@ -52,8 +52,9 @@ function saveReview() {
  
 
 function ratings(){
-	
-	var url = 'http://127.0.0.1:8000/api/ratings';
+	var id_restaurant = localStorage.getItem("id_restaurant");
+
+	var url = 'http://127.0.0.1:8000/api/rating/'+id_restaurant;
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	

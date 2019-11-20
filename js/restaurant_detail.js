@@ -8,7 +8,7 @@ function detailRestaurant(){
 
 	var id_restaurant = localStorage.getItem("id_restaurant");
 
-	var url = 'http://172.20.10.4:8000/api/restaurant/'+id_restaurant;
+	var url = 'http://127.0.0.1:8000/api/restaurant/'+id_restaurant;
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	xhr.onload = function() {
@@ -41,7 +41,7 @@ function detailRestaurant(){
 			  document.getElementById("photo3").innerHTML = ' <img src="'+restaurant.image.photo3+'" alt=""> '; 
 			  var addressMap = "https://maps.google.com/maps?q="+restaurant.latitude+","+restaurant.longitude+"&z=15&output=embed" ;
 			  
-			  restaurant[i].ratings.forEach(function(item){
+			  restaurant.ratings.forEach(function(item){
 					
 				  rating = rating + parseFloat(item.rating);
 				 
@@ -95,39 +95,5 @@ xhr.send();
 
 
 
-function reserver() {
-	
-		var username = document.getElementById("username").value;
-	   var email = document.getElementById("email").value;
-	   var password = document.getElementById("password").value;
-	
- var http = new XMLHttpRequest();
-		var url = 'http://127.0.0.1:8000/api/register';
-		
-		var params = "username="+username+"&email="+email+"&password="+password;
-		http.open('POST', url, true);
-
-		//Send the proper header information along with the request
-		http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-		http.onreadystatechange = function() {//Call a function when the state changes.
-		    if(http.readyState == 4 && http.status == 200) {
-		        
-		        if(http.responseText.toString() != '{"error":true,"message":"User already registered"}')
-				{
-		       // 	alert("Register successfull");
-		        	window.location.href='home.html';
-				}
-		        else{
-		        	
-		        	alert("Register unsuccessfull");
-		        	window.location.href='index.html';
-
-		        }
-		    }
-		}
-		http.send(params);
-		
-} ; 
 
 
