@@ -13,7 +13,7 @@ function reservations(){
 		  
 		  var restaurant = JSON.parse(this.responseText);
 		  for (i = 0; i <restaurant.length; i++) {
-			  row += '<li class="list-group-item"> <a href="#" class="media"> <div class="w-auto h-100 mr-3"> <figure class="square-60"><img src="'+restaurant[i].restaurant.photo+'" alt=""></figure> </div> <div class="media-body"> <p>'+restaurant[i].restaurant.name+'</p> <h5>'+restaurant[i].time+'</h5> <p><span>'+restaurant[i].restaurant.address+'</span></p> </div> <button class="like-heart color-red"> <i class="icon material-icons">delete</i> </button> </a> </li>';
+			  row += '<li class="list-group-item"> <a href="restaurant.html" onclick="getRestaurantById('+restaurant[i].restaurant.id+')" class="media"> <div class="w-auto h-100 mr-3"> <figure class="square-60"><img src="'+restaurant[i].restaurant.photo+'" alt=""></figure> </div> <div class="media-body"> <p>'+restaurant[i].restaurant.name+'</p> <h5>'+restaurant[i].time+'</h5> <p><span>'+restaurant[i].restaurant.address+'</span></p> </div> <button class="like-heart color-red"> <i class="icon material-icons">delete</i> </button> </a> </li>';
 		  }
 		  
 	  //document.getElementById("resto").innerHTML = row;  
