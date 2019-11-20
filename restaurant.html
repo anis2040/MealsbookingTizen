@@ -403,14 +403,16 @@
                         </div>
                     </div>
                     
-                     <div class=" footer row mx-0  mt-3">
+                     <div class=" footer row mx-0  mt-3 mb-8">
                         <div class="col ml-4">
-                        <div class="datepicker-here" data-timepicker="true" data-language='en'></div>
+                        <div class="datepicker-here" data-timepicker="true" data-language='en' id='timepicker-actions-exmpl'></div>
                         </div>
+                        
+                        <a href="javascript:void(0)" class="btn btn-block gradient border-0 mt-3 ">Book a Table</a>
                     </div>
-                    
-                                               
-                    
+                   
+                    	
+                   
                     <h2 class="block-title color-dark">Most Popular</h2>
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -569,18 +571,65 @@
     
     <script src="js/restaurant_detail.js"></script>
 
-     <!-- jQuery first, then Popper.js, then Bootstrap JS, then Propeller js -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	  <script type="text/javascript" src="js/propeller.min.js"></script>
+
     
     <script src="dist/js/datepicker.min.js"></script>
 
-        <!-- Include English language -->
-        <script src="dist/js/i18n/datepicker.en.js"></script>
+    <!-- Include English language -->
+    <script src="dist/js/i18n/datepicker.en.js"></script>
     
-    
+    <script>
+    // Create start date
+    var start = new Date(),
+        prevDay,
+        startHours = 9;
+
+    // 09:00 AM
+    start.setHours(0);
+    start.setMinutes(0);
+
+    // If today is Saturday or Sunday set 10:00 AM
+    if ([6, 0].indexOf(start.getDay()) != -1) {
+        start.setHours(10);
+        startHours = 10
+    }
+
+    $('#timepicker-actions-exmpl').datepicker({
+        timepicker: true,
+        language: 'en',
+        startDate: start,
+        minHours: startHours,
+        maxHours: 23,
+        onSelect: function (fd, d, picker) {
+            // Do nothing if selection was cleared
+            if (!d) return;
+
+            var day = d.getDay();
+           var currentDate  = new Date();
+           
+			console.log(currentDate);
+			console.log(fd);
+			
+            // Trigger only if date is changed
+            if (prevDay != undefined && prevDay == day) return;
+            prevDay = day;
+
+            // If chosen day is Saturday or Sunday when set
+            // hour value for weekends, else restore defaults
+            if (day == 6 || day == 0) {
+                picker.update({
+                    minHours: 10,
+                    maxHours: 23
+                })
+            } else {
+                picker.update({
+                    minHours: 8,
+                    maxHours: 23
+                })
+            }
+        }
+    })
+</script>
     
 
     <!-- page specific script -->
