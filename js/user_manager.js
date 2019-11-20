@@ -1,87 +1,32 @@
 
-window.onload = function() {
-    // TODO:: Do your initialization job
-
-    // add eventListener for tizenhwkey
-    document.addEventListener('tizenhwkey', function(e) {
-        if (e.keyName === "back") {
-            try {
-                tizen.application.getCurrentApplication().exit();
-            } catch (ignore) {}
-        }
-    });
-    
-    login()
-    
-};
-
-
-  function login(){
+  function login() {
 
 	  
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
-	var http = new XMLHttpRequest();
-	var url = 'http://127.0.0.1:8000/api/login';
-	var params = "username="+username+"&password="+password;
-	
-	http.open('POST', url, true);
-	
-	
-
-    
-	//Send the proper header information along with the request
-	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-	http.onreadystatechange = function() {//Call a function when the state changes.
-	    if(http.readyState == 4 && http.status == 200) {
-	        
-	        if( (http.responseText.toString() != '{"error":false,"message":"Invalid username or password"}') && 
-	        (http.responseText.toString() != '{"error":true,"message":"Invalid Operation Called"}') )
-	        
-			{
-	      //  	alert("Login successfull");
-	
-	       
-	      //	  localStorage.clear();
-    
-	        var data =  	http.responseText.toString();          	
-	        	var user = JSON.parse(data);
 	        	
 	// store item
-	  localStorage.setItem("userid", user.id );
-	  localStorage.setItem("username", user.username );
-	  localStorage.setItem("email", user.email );
-	
+	  localStorage.setItem("userid", 1);
+	  localStorage.setItem("username", "Chakib" );
+	  localStorage.setItem("email", "chakib.fathalah@esprit.tn" );
 
-	  
 	// retrieve item
 	  var userid = localStorage.getItem("userid");
 	  var username = localStorage.getItem("username");
 	  var email = localStorage.getItem("email");
 
-
-
-
-	  
      //	alert(gender);
-  	
-	  window.location.href='home.html';
-	        	
-	           
-	        	
-			}
-	        else{
-	        	
-	    	alert("Invalid username or password");
-				window.location.href='index.html';
-	        }
-	    }
-	}
+	  if (username == "" || password == "") {
+		alert("Username or password is empty");
+	  }
+	  else {
+		  window.location.href='home.html';  
+	  }
+    	
 	
-	http.send(params);
-	
-	}  ;
+  
+  };
+
 
 
 	

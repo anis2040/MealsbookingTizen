@@ -22,7 +22,7 @@ function restaurants(){
 		  var restaurant = JSON.parse(this.responseText);
 		  for (i = 0; i <restaurant.length; i++) {
 			  var image = restaurant[i].photo;
-			  row +='<div class="swiper-slide"> <figure><img src="'+image+'" alt=""></figure> <div class="block-slide"> <div class="card card-data-item"> <div class="card-body"> <div class="media"> <a href="#" class="media-body"> <p>'+restaurant[i].name+'</p> <h5>'+restaurant[i].category+' </h5> <p>'+restaurant[i].address+'</p> </a> <div class="w-auto h-100"> <a class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div> </div> </div> <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">4.9 <span>(254)</span></span> </div> <div class="col px-0"> <i class="material-icons text-grey">schedule</i> <span class="post-seconds">20 <span>min</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMin+'<span>$</span></span> </div> </div> </div> </div> </div> </div> ';
+			  row +='<div class="swiper-slide"> <figure><img src="'+image+'" alt=""></figure> <div class="block-slide"> <div class="card card-data-item"> <div class="card-body"> <div class="media"> <a href="restaurant.html" onclick="getRestaurantById('+restaurant[i].id+')" class="media-body"> <p>'+restaurant[i].name+'</p> <h5>'+restaurant[i].category+' </h5> <p>'+restaurant[i].address+'</p> </a> <div class="w-auto h-100"> </div> </div> </div> <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds">4.9 <span>(254)</span></span> </div> <div class="col px-0"> <i class="material-icons text-grey">schedule</i> <span class="post-seconds">20 <span>min</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMin+'<span>$</span></span> </div> </div> </div> </div> </div> </div> ';
 
 		  }
 		  
@@ -32,6 +32,7 @@ function restaurants(){
 	};
 xhr.send();
 }
+
 
 function saveCategoryToLS(category){
 	
@@ -74,7 +75,7 @@ function topTen(){
 				  ratingAverage = 5
 			  }
 
-			    row = row + '<div class="card "> <div class="card-body"> <div class="media"> <a href="restaurant.html" onclick="getRestaurantById('+restaurant[i].id+')" class="square-40 mr-3"><img src="'+restaurant[i].photo+'" alt=""></a> <a href="#" class="media-body"> <h5>'+restaurant[i].name+'</h5> <p>'+restaurant[i].category+'</p> <p>'+restaurant[i].address+'</p></a> <a class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div> </div>       <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds"> '+Math.round(ratingAverage)+' <span>('+restaurant[i].ratings.length+')</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMin+' <span>$</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMax+' <span>$$</span></span> </div> </div> </div></div>';  		
+			    row = row + '<div class="card "> <div class="card-body"> <div class="media"> <a href="restaurant.html" onclick="getRestaurantById('+restaurant[i].id+')" class="square-40 mr-3"><img src="'+restaurant[i].photo+'" alt=""></a> <a href="restaurant.html" onclick="getRestaurantById('+restaurant[i].id+')" class="media-body"> <h5>'+restaurant[i].name+'</h5> <p>'+restaurant[i].category+'</p> <p>'+restaurant[i].address+'</p></a> <a href="#" onclick="#" class="like-heart color-red"> <i class="icon material-icons">favorite</i> </a> </div> </div>       <div class="card-footer pt-0"> <div class="row"> <div class="col-auto"> <i class="material-icons text-warning">star</i> <span class="post-seconds"> '+Math.round(ratingAverage)+' <span>('+restaurant[i].ratings.length+')</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMin+' <span>$</span></span> </div> <div class="col"> <i class="material-icons text-grey">monetization_on</i> <span class="post-seconds">'+restaurant[i].priceMax+' <span>$$</span></span> </div> </div> </div></div>';  		
 			  
 		  }
 		  
@@ -84,4 +85,10 @@ function topTen(){
 	};
 xhr.send();
 }
+
+function addToFavorite(restaurant) {
+	alert(restaurant);
+	localStorage.setItem('restaurant', restaurant);
+}
+
 
